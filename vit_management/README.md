@@ -1,6 +1,6 @@
 # vit_management
 
-A new Flutter project.
+A Flutter project for complaint management.
 
 ## Getting Started
 

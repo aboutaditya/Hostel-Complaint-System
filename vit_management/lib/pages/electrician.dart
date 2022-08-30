@@ -12,7 +12,7 @@ class Electrician extends StatelessWidget {
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: const Text("Electrician"),
+        title: const Text("Electrician Complaint"),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(15),
@@ -23,6 +23,8 @@ class Electrician extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
+              Image.asset("images/electrician.jpg",height: 250,),
+              SizedBox(height: 10,),
               TextFormField(
                 validator: ((value) {
                   if (value!.isEmpty) {

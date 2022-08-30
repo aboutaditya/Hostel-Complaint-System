@@ -11,7 +11,7 @@ class other extends StatelessWidget {
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: const Text("Others"),
+        title: const Text("Other Complaints"),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(15),

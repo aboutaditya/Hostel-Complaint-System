@@ -23,6 +23,7 @@ class drawer extends StatelessWidget {
                   ),
                 )),
             const ListTile(
+              leading: Icon(Icons.list,color: Colors.white,),
               title: Text("Registered Complaints",
                   textScaleFactor: 1.25,
                   style: TextStyle(
@@ -37,11 +38,12 @@ class drawer extends StatelessWidget {
                         builder: (context) => const LoginPage()),
                   );
               },
-              
+              // leading: IconData(0xe3b3, fontFamily: 'MaterialIcons'),
+              leading: const Icon(Icons.logout,color: Colors.red,),
               title: const Text("Log Out",
                   textScaleFactor: 1.25,
                   style: TextStyle(
-                    color: Color.fromARGB(255, 182, 22, 22),
+                    color: Colors.red,
                   )),
             ),
             

@@ -24,20 +24,12 @@ class _HomeState extends State<Home> {
         centerTitle: true,
       ),
       body: GridView.count(
-        shrinkWrap: true,
-
-        padding: EdgeInsets.all(0),
-        addAutomaticKeepAlives: false,
-        addRepaintBoundaries: false,
-        addSemanticIndexes: false,
-        // padding: EdgeInsets.all(0),
         crossAxisCount: 2,
         crossAxisSpacing: 16,
         mainAxisSpacing: 16,
         children: [
           Expanded(
             child: Column(
-              // BoxConstraints(maxHeight: 200),
               mainAxisSize: MainAxisSize.min,
               children: [
                 ElevatedButton(
@@ -59,8 +51,9 @@ class _HomeState extends State<Home> {
                     ),
                     backgroundColor: MaterialStateProperty.resolveWith<Color>(
                       (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.pressed))
+                        if (states.contains(MaterialState.pressed)) {
                           return Colors.white;
+                        }
                         return Colors.white;
                       },
                     ),
@@ -70,7 +63,7 @@ class _HomeState extends State<Home> {
                     height: 170,
                   ),
                 ),
-                Text("Electrician"),
+                const Text("Electrician",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15.3),),
               ],
             ),
           ),
@@ -108,7 +101,7 @@ class _HomeState extends State<Home> {
                     height: 170,
                   ),
                 ),
-                Text("Carpenter")
+                const Text("Carpenter",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15.3))
               ],
             ),
           ),
@@ -145,7 +138,7 @@ class _HomeState extends State<Home> {
                     height: 170,
                   ),
                 ),
-                Text("Cleaner")
+                const Text("Cleaner",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15.3))
               ],
             ),
           ),
@@ -182,7 +175,7 @@ class _HomeState extends State<Home> {
                     height: 170,
                   ),
                 ),
-                Text("Plumber")
+                const Text("Plumber",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15.3))
               ],
             ),
           ),
@@ -219,7 +212,7 @@ class _HomeState extends State<Home> {
                     height: 170,
                   ),
                 ),
-                Text("Others")
+                const Text("Others",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15.3))
               ],
             ),
           ),

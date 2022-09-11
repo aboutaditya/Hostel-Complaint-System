@@ -29,7 +29,6 @@ class GoogleSignInProvider extends ChangeNotifier {
           print('Something is wrong');
         } else {
           print('User is signed in!');
-          switchPage();
           Sign_in_check = true;
         }
       },
@@ -38,20 +37,3 @@ class GoogleSignInProvider extends ChangeNotifier {
     notifyListeners();
   }
 }
-
-// Future<void> main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await Firebase.initializeApp();
-
-// // Ideal time to initialize
-//   await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
-// //...
-//   FirebaseAuth.instance.authStateChanges().listen((User? user) {
-//     if (user == null) {
-//       print('User is currently signed out!');
-//     } else {
-//       print('User is signed in!');
-//       switchPage();
-//     }
-//   });
-// }

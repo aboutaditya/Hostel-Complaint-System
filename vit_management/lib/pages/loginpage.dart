@@ -3,7 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:vit_management/pages/google_Sign_in.dart';
 import 'package:vit_management/pages/home.dart';
-import 'package:vit_management/pages/home_data.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -98,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                   style: ButtonStyle(
                     minimumSize: MaterialStateProperty.all(Size(150, 60)),
                   ),
-                  icon: FaIcon(
+                  icon: const FaIcon(
                     FontAwesomeIcons.google,
                     color: Color.fromARGB(255, 16, 14, 14),
                   ),
@@ -107,11 +106,12 @@ class _LoginPageState extends State<LoginPage> {
                     final provider = Provider.of<GoogleSignInProvider>(context,
                         listen: false);
                     provider.googleLogin();
-                    Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Home()),
-                            );
+                    if (GoogleSignInProvider().Sign_in_check=true) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Home()),
+                      );
+                    }
                   },
                 )
               ],

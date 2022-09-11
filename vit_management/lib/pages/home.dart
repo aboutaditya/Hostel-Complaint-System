@@ -26,23 +26,7 @@ class _HomeState extends State<Home> {
         title: Text("Complaint System"),
         centerTitle: true,
       ),
-      body: StreamBuilder(
-          stream: FirebaseAuth.instance.authStateChanges(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (snapshot.hasError) {
-              return const Center(
-                child: Text("Something went Wrong!"),
-              );
-            } else if (snapshot.hasData) {
-              return HomeData();
-            } else {
-              return LoginPage();
-            }
-          }),
+      body:HomeData(),
       drawer: drawer(),
     );
   }

@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:vit_management/pages/home_data.dart';
 class MyRoutes {
   static String loginRoute = "/login";
   static String homeRoute = "/home";
@@ -7,4 +9,7 @@ class MyRoutes {
   static String cleaner = "/cleaner";
   static String others = "/others";
 
+}
+void switchPage(){
+  child: HomeData();
 }

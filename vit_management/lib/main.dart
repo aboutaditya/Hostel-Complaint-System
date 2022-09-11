@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:vit_management/firebase_options.dart';
+import 'package:vit_management/pages/google_Sign_in.dart';
 import 'package:vit_management/pages/loginpage.dart';
 import 'pages/home.dart';
 import 'pages/routes.dart';
@@ -19,14 +21,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: "/",
-      routes: {
-        "/": (context) => const LoginPage(),
-        MyRoutes.homeRoute: (context) => Home(),
-        MyRoutes.loginRoute: (context) => const LoginPage()
-      },
+    return ChangeNotifierProvider(
+      create: ((context) => GoogleSignInProvider()),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: "/",
+        routes: {
+          "/": (context) => const LoginPage(),
+          MyRoutes.homeRoute: (context) => Home(),
+          MyRoutes.loginRoute: (context) => const LoginPage()
+        },
+      ),
     );
   }
 }

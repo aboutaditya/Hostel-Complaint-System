@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:vit_management/pages/google_Sign_in.dart';
 import 'package:vit_management/pages/home.dart';
 
 class LoginPage extends StatefulWidget {
@@ -28,7 +31,6 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 20,
                 ),
-               
                 TextFormField(
                   style: const TextStyle(fontStyle: FontStyle.italic),
                   validator: ((value) {
@@ -82,6 +84,23 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   child: const Text("LOGIN"),
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Text("OR",
+                style: TextStyle(fontWeight: FontWeight.bold,fontSize:20)),
+                const SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton.icon(
+                  style: ButtonStyle(minimumSize:MaterialStateProperty.all(Size(150,60) ),),
+                  icon: FaIcon(FontAwesomeIcons.google,color: Color.fromARGB(255, 16, 14, 14),),
+                    label: Text("Sign in with Google"),
+                    onPressed:(){
+                      final provider= Provider.of<GoogleSignInProvider>(context,listen:false);
+                      provider.googleLogin();
+                    },
+                )
               ],
             ),
           ),

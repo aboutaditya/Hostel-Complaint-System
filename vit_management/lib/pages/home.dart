@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:vit_management/pages/carpenter.dart';
 import 'package:vit_management/pages/cleaner.dart';
 import 'package:vit_management/pages/electrician.dart';
+import 'package:vit_management/pages/home_data.dart';
+import 'package:vit_management/pages/loginpage.dart';
 import 'package:vit_management/pages/other.dart';
 import 'package:vit_management/pages/plumber.dart';
 import 'drawer.dart';
@@ -23,201 +26,23 @@ class _HomeState extends State<Home> {
         title: Text("Complaint System"),
         centerTitle: true,
       ),
-      body: GridView.count(
-        crossAxisCount: 2,
-        crossAxisSpacing: 16,
-        mainAxisSpacing: 16,
-        children: [
-          Expanded(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Electrician()),
-                    );
-                  },
-                  style: ButtonStyle(
-                    elevation: MaterialStateProperty.resolveWith<double>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.disabled)) {
-                          return 0;
-                        }
-                        return 0;
-                      },
-                    ),
-                    backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.pressed)) {
-                          return Colors.white;
-                        }
-                        return Colors.white;
-                      },
-                    ),
-                  ),
-                  child: Image.asset(
-                    "images/electrician.jpg",
-                    height: 170,
-                  ),
-                ),
-                const Text("Electrician",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15.3),),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const carpenter()),
-                    );
-                  },
-                  style: ButtonStyle(
-                    elevation: MaterialStateProperty.resolveWith<double>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.disabled)) {
-                          return 0;
-                        }
-                        return 0;
-                      },
-                    ),
-                    backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.pressed))
-                          return Colors.white;
-                        return Colors.white;
-                      },
-                    ),
-                  ),
-                  child: Image.asset(
-                    "images/carpenter.jpg",
-                    height: 170,
-                  ),
-                ),
-                const Text("Carpenter",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15.3))
-              ],
-            ),
-          ),
-          Expanded(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const cleaner()),
-                    );
-                  },
-                  style: ButtonStyle(
-                    elevation: MaterialStateProperty.resolveWith<double>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.disabled)) {
-                          return 0;
-                        }
-                        return 0;
-                      },
-                    ),
-                    backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.pressed))
-                          return Colors.white;
-                        return Colors.white;
-                      },
-                    ),
-                  ),
-                  child: Image.asset(
-                    "images/cleaner.jpg",
-                    height: 170,
-                  ),
-                ),
-                const Text("Cleaner",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15.3))
-              ],
-            ),
-          ),
-          Expanded(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const plumber()),
-                    );
-                  },
-                  style: ButtonStyle(
-                    elevation: MaterialStateProperty.resolveWith<double>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.disabled)) {
-                          return 0;
-                        }
-                        return 0;
-                      },
-                    ),
-                    backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.pressed))
-                          return Colors.white;
-                        return Colors.white;
-                      },
-                    ),
-                  ),
-                  child: Image.asset(
-                    "images/plumber.jpg",
-                    height: 170,
-                  ),
-                ),
-                const Text("Plumber",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15.3))
-              ],
-            ),
-          ),
-          Expanded(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const other()),
-                    );
-                  },
-                  style: ButtonStyle(
-                    elevation: MaterialStateProperty.resolveWith<double>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.disabled)) {
-                          return 0;
-                        }
-                        return 0;
-                      },
-                    ),
-                    backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.pressed))
-                          return Colors.white;
-                        return Colors.white;
-                      },
-                    ),
-                  ),
-                  child: Image.asset(
-                    "images/others.jpg",
-                    height: 170,
-                  ),
-                ),
-                const Text("Others",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15.3))
-              ],
-            ),
-          ),
-        ],
-      ),
+      body: StreamBuilder(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (snapshot.hasError) {
+              return const Center(
+                child: Text("Something went Wrong!"),
+              );
+            } else if (snapshot.hasData) {
+              return HomeData();
+            } else {
+              return LoginPage();
+            }
+          }),
       drawer: drawer(),
     );
   }

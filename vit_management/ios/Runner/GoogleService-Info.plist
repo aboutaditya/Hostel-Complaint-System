@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>433811686263-ftgql9m1iq39l5ikpj41f9ce4e982o2f.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.433811686263-ftgql9m1iq39l5ikpj41f9ce4e982o2f</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDgUeYdUWj4i61S6P6yygltxXbcqkFWmY8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>433811686263</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.vitManagement</string>
+	<key>PROJECT_ID</key>
+	<string>vit-complaint-management</string>
+	<key>STORAGE_BUCKET</key>
+	<string>vit-complaint-management.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:433811686263:ios:18d8424008ef012fd55772</string>
+</dict>
+</plist>

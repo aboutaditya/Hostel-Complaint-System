@@ -21,6 +21,8 @@ class cleaner extends StatelessWidget {
               child: Column(
           children: [
               SizedBox(height: 10,),
+              Image.asset("images/cleaner.jpg",height: 250,),
+              SizedBox(height: 10,),
               TextFormField(
                 validator: ((value) {
                   if (value!.isEmpty) {

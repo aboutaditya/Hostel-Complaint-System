@@ -21,6 +21,8 @@ class other extends StatelessWidget {
               child: Column(
           children: [
               SizedBox(height: 10,),
+              Image.asset("images/others.jpg",height: 250,),
+              SizedBox(height: 10,),
               TextFormField(
                 validator: ((value) {
                   if (value!.isEmpty) {

@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:vit_management/firebase_options.dart';
 import 'package:vit_management/pages/loginpage.dart';
 import 'pages/home.dart';
 import 'pages/routes.dart';
+import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
-  runApp(const MyApp());
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options:  DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -16,10 +23,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
       routes: {
-          "/": (context) => const LoginPage(),
-          MyRoutes.homeRoute: (context) => Home(),
-          MyRoutes.loginRoute: (context) => const LoginPage()
-        },
+        "/": (context) => const LoginPage(),
+        MyRoutes.homeRoute: (context) => Home(),
+        MyRoutes.loginRoute: (context) => const LoginPage()
+      },
     );
   }
 }

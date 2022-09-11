@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "433811686263",
+    "project_id": "vit-complaint-management",
+    "storage_bucket": "vit-complaint-management.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433811686263:android:450ea68b0815ae5ed55772",
+        "android_client_info": {
+          "package_name": "com.example.vit_management"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "433811686263-vlf1ivbh1o376juc41mgacapv0sqov6t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCM5nBoyB3lKAQwcdYBnppwVwlW9dChuXs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "433811686263-vlf1ivbh1o376juc41mgacapv0sqov6t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

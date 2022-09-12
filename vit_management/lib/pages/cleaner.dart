@@ -11,7 +11,7 @@ class cleaner extends StatelessWidget {
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: const Text("Cleaner"),
+        title: const Text("Cleaner Complaint"),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(15),
@@ -20,6 +20,8 @@ class cleaner extends StatelessWidget {
             child: Center(
               child: Column(
           children: [
+              SizedBox(height: 10,),
+              Image.asset("images/cleaner.jpg",height: 250,),
               SizedBox(height: 10,),
               TextFormField(
                 validator: ((value) {

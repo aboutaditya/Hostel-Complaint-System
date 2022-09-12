@@ -11,7 +11,7 @@ class other extends StatelessWidget {
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: const Text("Others"),
+        title: const Text("Other Complaints"),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(15),
@@ -20,6 +20,8 @@ class other extends StatelessWidget {
             child: Center(
               child: Column(
           children: [
+              SizedBox(height: 10,),
+              Image.asset("images/others.jpg",height: 250,),
               SizedBox(height: 10,),
               TextFormField(
                 validator: ((value) {

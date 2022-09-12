@@ -11,7 +11,7 @@ class plumber extends StatelessWidget {
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: const Text("Plumber"),
+        title: const Text("Plumber Complaint"),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(15),
@@ -21,6 +21,8 @@ class plumber extends StatelessWidget {
               child: Column(
           children: [
               const SizedBox(height: 10,),
+              Image.asset("images/plumber.jpg",height: 250,),
+              SizedBox(height: 10,),
               TextFormField(
                 validator: ((value) {
                   if (value!.isEmpty) {

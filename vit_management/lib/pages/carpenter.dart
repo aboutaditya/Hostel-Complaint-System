@@ -11,7 +11,7 @@ class carpenter extends StatelessWidget {
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: const Text("Carpenter"),
+        title: const Text("Carpenter Complaint"),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(15),
@@ -20,6 +20,8 @@ class carpenter extends StatelessWidget {
             child: Center(
               child: Column(
           children: [
+              SizedBox(height: 10,),
+              Image.asset("images/carpenter.jpg",height: 250,),
               SizedBox(height: 10,),
               TextFormField(
                 validator: ((value) {

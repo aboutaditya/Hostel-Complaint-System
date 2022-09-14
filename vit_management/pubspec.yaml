@@ -41,6 +41,7 @@ dependencies:
   firebase_auth: ^3.8.0
   font_awesome_flutter: ^10.2.1
   provider: ^6.0.3
+  loading_animation_widget:
 
 dev_dependencies:
   flutter_test:

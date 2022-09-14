@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:vit_management/pages/google_Sign_in.dart';
 import 'package:vit_management/pages/home.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -24,89 +25,30 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 const SafeArea(
                   child: SizedBox(
-                    height: 10,
+                    height: 50,
                   ),
                 ),
-                Image.asset("images/vitlogo.png"),
-                const SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
-                  style: const TextStyle(fontStyle: FontStyle.italic),
-                  validator: ((value) {
-                    if (value!.isEmpty) {
-                      return "Enter Registration Number";
-                    } else {
-                      return null;
-                    }
-                  }),
-                  decoration: const InputDecoration(
-                      hintText: "Enter Registration Number",
-                      labelText: "Registration No. :"),
-                ),
+                Image.asset("images/login3.png"),
                 const SizedBox(
                   height: 10,
-                ),
-                TextFormField(
-                  style: const TextStyle(fontStyle: FontStyle.italic),
-                  validator: ((value) {
-                    if (value!.isEmpty) {
-                      return "password";
-                    } else {
-                      return null;
-                    }
-                  }),
-                  decoration: const InputDecoration(
-                      hintText: "Enter Password", labelText: "Password:"),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Home()),
-                    );
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.pressed)) {
-                          return Colors.blue;
-                        }
-                        return Colors.blue;
-                      },
-                    ),
-                  ),
-                  child: const Text("LOGIN"),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Text("OR",
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                const SizedBox(
-                  height: 20,
                 ),
                 ElevatedButton.icon(
                   style: ButtonStyle(
-                    minimumSize: MaterialStateProperty.all(Size(150, 60)),
+                    minimumSize: MaterialStateProperty.all(Size(300, 60)),
                   ),
                   icon: const FaIcon(
                     FontAwesomeIcons.google,
-                    color: Color.fromARGB(255, 16, 14, 14),
+                    color: Colors.white,
                   ),
-                  label: Text("Sign in with Google"),
+                  label: const Text(
+                    "Sign in with Google",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                  ),
                   onPressed: () {
                     final provider = Provider.of<GoogleSignInProvider>(context,
                         listen: false);
                     provider.googleLogin();
-                    if (GoogleSignInProvider().Sign_in_check=true) {
+                    if (GoogleSignInProvider().Sign_in_check = true) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => const Home()),

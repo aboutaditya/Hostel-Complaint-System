@@ -6,6 +6,7 @@ class carpenter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
@@ -15,7 +16,6 @@ class carpenter extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(15),
-
         child: Form(
             child: Center(
               child: Column(

@@ -11,7 +11,7 @@ import 'package:firebase_core/firebase_core.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options:  DefaultFirebaseOptions.currentPlatform,
+    options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(MyApp());
 }
@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+    if (GoogleSignInProvider().Sign_in_check = true) {
+      return ChangeNotifierProvider(
       create: ((context) => GoogleSignInProvider()),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -33,5 +34,21 @@ class MyApp extends StatelessWidget {
         },
       ),
     );
+    }
+    else{
+      return ChangeNotifierProvider(
+      create: ((context) => GoogleSignInProvider()),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: "/",
+        routes: {
+          "/": (context) => const LoginPage(),
+          MyRoutes.homeRoute: (context) => Home(),
+          MyRoutes.loginRoute: (context) => const LoginPage()
+        },
+      ),
+    );
+    }
+    
   }
 }

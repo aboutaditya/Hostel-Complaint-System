@@ -24,7 +24,7 @@ class HomeData extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const Electrician()),
+                        builder: (context) =>  Electrician()),
                   );
                 },
                 style: ButtonStyle(
@@ -65,7 +65,7 @@ class HomeData extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const carpenter()),
+                    MaterialPageRoute(builder: (context) =>  carpenter()),
                   );
                 },
                 style: ButtonStyle(
@@ -103,7 +103,7 @@ class HomeData extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const cleaner()),
+                    MaterialPageRoute(builder: (context) =>  cleaner()),
                   );
                 },
                 style: ButtonStyle(
@@ -141,7 +141,7 @@ class HomeData extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const plumber()),
+                    MaterialPageRoute(builder: (context) =>  plumber()),
                   );
                 },
                 style: ButtonStyle(
@@ -179,7 +179,7 @@ class HomeData extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const other()),
+                    MaterialPageRoute(builder: (context) =>  other()),
                   );
                 },
                 style: ButtonStyle(

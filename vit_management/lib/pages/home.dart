@@ -1,12 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:vit_management/pages/carpenter.dart';
-import 'package:vit_management/pages/cleaner.dart';
-import 'package:vit_management/pages/electrician.dart';
 import 'package:vit_management/pages/home_data.dart';
-import 'package:vit_management/pages/loginpage.dart';
-import 'package:vit_management/pages/other.dart';
-import 'package:vit_management/pages/plumber.dart';
 import 'drawer.dart';
 
 class Home extends StatefulWidget {

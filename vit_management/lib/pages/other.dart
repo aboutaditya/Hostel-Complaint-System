@@ -1,7 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class other extends StatelessWidget {
-  const other({Key? key}) : super(key: key);
+  other({Key? key}) : super(key: key);
+  final controller1 = TextEditingController();
+  final controller2 = TextEditingController();
+  final controller3 = TextEditingController();
+  final controller4 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +20,22 @@ class other extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(15),
-
         child: Form(
             child: Center(
-              child: Column(
-          children: [
-              SizedBox(height: 10,),
-              Image.asset("images/others.jpg",height: 250,),
-              SizedBox(height: 10,),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 10,
+              ),
+              Image.asset(
+                "images/others.jpg",
+                height: 250,
+              ),
+              SizedBox(
+                height: 10,
+              ),
               TextFormField(
+                controller: controller1,
                 validator: ((value) {
                   if (value!.isEmpty) {
                     return "Enter Registration Number";
@@ -32,10 +44,14 @@ class other extends StatelessWidget {
                   }
                 }),
                 decoration: const InputDecoration(
-                    hintText: "Enter Registration Number", labelText: "Registration No. :"),
+                    hintText: "Enter Registration Number",
+                    labelText: "Registration No. :"),
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               TextFormField(
+                controller: controller2,
                 validator: ((value) {
                   if (value!.isEmpty) {
                     return "Enter Room Number";
@@ -46,9 +62,11 @@ class other extends StatelessWidget {
                 decoration: const InputDecoration(
                     hintText: "Enter Room no.", labelText: "Room No. :"),
               ),
-              SizedBox(height: 10,),
-
+              SizedBox(
+                height: 10,
+              ),
               TextFormField(
+                controller: controller3,
                 validator: ((value) {
                   if (value!.isEmpty) {
                     return "Enter Contact Number";
@@ -59,9 +77,11 @@ class other extends StatelessWidget {
                 decoration: const InputDecoration(
                     hintText: "Enter Contact no.", labelText: "Contact No. :"),
               ),
-              SizedBox(height: 10,),
-
+              SizedBox(
+                height: 10,
+              ),
               TextFormField(
+                controller: controller4,
                 validator: ((value) {
                   if (value!.isEmpty) {
                     return "Enter the issue!";
@@ -71,16 +91,43 @@ class other extends StatelessWidget {
                 }),
                 decoration: const InputDecoration(
                     hintText: "Enter issue", labelText: "Issue :"),
-              ),const SizedBox(
+              ),
+              const SizedBox(
                 height: 10,
               ),
               ElevatedButton(
-                  onPressed: () => Navigator.of(context).pop(),
+                  onPressed: () {
+                    String regno = controller1.text;
+                    String roomno = controller2.text;
+                    String contno = controller3.text;
+                    String complaint = controller4.text;
+                    createUser(
+                        regno: regno,
+                        roomnno: roomno,
+                        contno: contno,
+                        complaint: complaint);
+                    Navigator.of(context).pop();
+                  },
                   child: Text("Submit"))
-          ],
-        ),
-            )),
+            ],
+          ),
+        )),
       ),
     );
+  }
+
+  Future createUser(
+      {required String regno,
+      required String roomnno,
+      required String contno,
+      required complaint}) async {
+    final docUser = FirebaseFirestore.instance.collection('other').doc(regno);
+    final json = {
+      'regno': regno,
+      'roomno': roomnno,
+      'contno': contno,
+      'complaint': complaint
+    };
+    await docUser.set(json);
   }
 }

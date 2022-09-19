@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:vit_management/pages/drawer.dart';
 import 'package:vit_management/pages/google_Sign_in.dart';
 import 'package:vit_management/pages/home.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:vit_management/pages/login_drawer.dart';
+import 'package:vit_management/pages/workerlogin.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -16,6 +19,10 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Student Log In!"),
+        centerTitle: true,
+      ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         padding: EdgeInsets.all(25),
@@ -23,11 +30,6 @@ class _LoginPageState extends State<LoginPage> {
           child: Center(
             child: Column(
               children: [
-                const SafeArea(
-                  child: SizedBox(
-                    height: 50,
-                  ),
-                ),
                 Image.asset("images/login3.png"),
                 const SizedBox(
                   height: 10,
@@ -53,14 +55,19 @@ class _LoginPageState extends State<LoginPage> {
                         context,
                         MaterialPageRoute(builder: (context) => const Home()),
                       );
+                      Center(child: CircularProgressIndicator());
                     }
                   },
-                )
+                ),
+                const SizedBox(
+                  height: 62,
+                ),
               ],
             ),
           ),
         ),
       ),
+      drawer: login_drawer(),
     );
   }
 }

@@ -35,11 +35,11 @@ class drawer extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const Registered()),
                 );
               },
-              leading: Icon(
+              leading: const Icon(
                 Icons.list,
                 color: Colors.white,
               ),
-              title: Text("Registered Complaints",
+              title: const Text("Registered Complaints",
                   textScaleFactor: 1.25,
                   style: TextStyle(
                     color: Colors.white,
@@ -53,7 +53,6 @@ class drawer extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const LoginPage()),
                 );
               },
-              // leading: IconData(0xe3b3, fontFamily: 'MaterialIcons'),
               leading: const Icon(
                 Icons.logout,
                 color: Colors.red,

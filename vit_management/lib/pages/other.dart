@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class other extends StatelessWidget {
@@ -10,6 +11,7 @@ class other extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -35,6 +37,7 @@ class other extends StatelessWidget {
                 height: 10,
               ),
               TextFormField(
+                autofocus: true,
                 controller: controller1,
                 validator: ((value) {
                   if (value!.isEmpty) {
@@ -44,6 +47,7 @@ class other extends StatelessWidget {
                   }
                 }),
                 decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
                     hintText: "Enter Registration Number",
                     labelText: "Registration No. :"),
               ),
@@ -60,7 +64,9 @@ class other extends StatelessWidget {
                   }
                 }),
                 decoration: const InputDecoration(
-                    hintText: "Enter Room no.", labelText: "Room No. :"),
+                    border: OutlineInputBorder(),
+                    hintText: "Enter Room no.",
+                    labelText: "Room No. :"),
               ),
               SizedBox(
                 height: 10,
@@ -75,7 +81,9 @@ class other extends StatelessWidget {
                   }
                 }),
                 decoration: const InputDecoration(
-                    hintText: "Enter Contact no.", labelText: "Contact No. :"),
+                    border: OutlineInputBorder(),
+                    hintText: "Enter Contact no.",
+                    labelText: "Contact No. :"),
               ),
               SizedBox(
                 height: 10,
@@ -90,7 +98,9 @@ class other extends StatelessWidget {
                   }
                 }),
                 decoration: const InputDecoration(
-                    hintText: "Enter issue", labelText: "Issue :"),
+                    border: OutlineInputBorder(),
+                    hintText: "Enter issue",
+                    labelText: "Issue :"),
               ),
               const SizedBox(
                 height: 10,
@@ -121,8 +131,12 @@ class other extends StatelessWidget {
       required String roomnno,
       required String contno,
       required complaint}) async {
-    final docUser = FirebaseFirestore.instance.collection('other').doc(regno);
+    final docUser = FirebaseFirestore.instance.collection('other').doc();
+    String mail = FirebaseAuth.instance.currentUser!.email!;
+
     final json = {
+      'type': 'other',
+      'mail': mail,
       'regno': regno,
       'roomno': roomnno,
       'contno': contno,

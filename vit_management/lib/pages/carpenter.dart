@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -36,6 +37,7 @@ class carpenter extends StatelessWidget {
                 height: 10,
               ),
               TextFormField(
+                autofocus: true,
                 controller: controller1,
                 validator: ((value) {
                   if (value!.isEmpty) {
@@ -45,6 +47,8 @@ class carpenter extends StatelessWidget {
                   }
                 }),
                 decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+
                     hintText: "Enter Registration Number",
                     labelText: "Registration No. :"),
               ),
@@ -61,6 +65,8 @@ class carpenter extends StatelessWidget {
                   }
                 }),
                 decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+
                     hintText: "Enter Room no.", labelText: "Room No. :"),
               ),
               SizedBox(
@@ -76,6 +82,8 @@ class carpenter extends StatelessWidget {
                   }
                 }),
                 decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+
                     hintText: "Enter Contact no.", labelText: "Contact No. :"),
               ),
               SizedBox(
@@ -91,6 +99,8 @@ class carpenter extends StatelessWidget {
                   }
                 }),
                 decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+
                     hintText: "Enter issue", labelText: "Issue :"),
               ),
               const SizedBox(
@@ -123,8 +133,12 @@ class carpenter extends StatelessWidget {
       required String contno,
       required complaint}) async {
     final docUser =
-        FirebaseFirestore.instance.collection('carpenter').doc(regno);
+        FirebaseFirestore.instance.collection('complaint').doc();
+    String mail = FirebaseAuth.instance.currentUser!.email!;
+    
     final json = {
+      'type':'carpenter',
+      'mail': mail,
       'regno': regno,
       'roomno': roomnno,
       'contno': contno,

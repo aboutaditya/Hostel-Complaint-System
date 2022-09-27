@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:vit_management/pages/google_Sign_in.dart';
 import 'package:vit_management/pages/loginpage.dart';
+import 'package:vit_management/pages/registered.dart';
 
 class drawer extends StatelessWidget {
   const drawer({Key? key}) : super(key: key);
@@ -9,6 +11,9 @@ class drawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser!;
+    String usern = user.displayName!;
+    String emaill = user.email!;
+    String purl = user.photoURL!;
     return Drawer(
       child: Container(
         color: Colors.blue,
@@ -17,18 +22,24 @@ class drawer extends StatelessWidget {
             DrawerHeader(
                 padding: EdgeInsets.zero,
                 child: UserAccountsDrawerHeader(
-                  accountName: Text(user.displayName!),
-                  accountEmail: Text(user.email!),
+                  accountName: Text(usern),
+                  accountEmail: Text(emaill),
                   currentAccountPicture: CircleAvatar(
-                    backgroundImage: AssetImage(user.photoURL!),
+                    backgroundImage: NetworkImage(purl),
                   ),
                 )),
-            const ListTile(
-              leading: Icon(
+            ListTile(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Registered()),
+                );
+              },
+              leading: const Icon(
                 Icons.list,
                 color: Colors.white,
               ),
-              title: Text("Registered Complaints",
+              title: const Text("Registered Complaints",
                   textScaleFactor: 1.25,
                   style: TextStyle(
                     color: Colors.white,
@@ -42,7 +53,6 @@ class drawer extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const LoginPage()),
                 );
               },
-              // leading: IconData(0xe3b3, fontFamily: 'MaterialIcons'),
               leading: const Icon(
                 Icons.logout,
                 color: Colors.red,

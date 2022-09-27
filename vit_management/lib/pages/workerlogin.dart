@@ -1,19 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:vit_management/pages/electrician.dart';
-import 'package:vit_management/pages/home.dart';
 import 'package:vit_management/pages/login_drawer.dart';
+import 'package:vit_management/pages/worker.dart';
 
 class WorkerLogin extends StatelessWidget {
   WorkerLogin({Key? key}) : super(key: key);
-  CollectionReference<Map<String, dynamic>> passw =
-      FirebaseFirestore.instance.collection('workerlogin');
+
   @override
   Widget build(BuildContext context) {
-    final user_controller = TextEditingController();
-    final pass_controller = TextEditingController();
+    final userController = TextEditingController();
+    final passController = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
@@ -23,7 +19,7 @@ class WorkerLogin extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Center(
@@ -33,7 +29,7 @@ class WorkerLogin extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: TextFormField(
-                        controller: user_controller,
+                        controller: userController,
                         validator: ((value) {
                           if (value!.isEmpty) {
                             return "Enter User ID";
@@ -50,7 +46,7 @@ class WorkerLogin extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: TextFormField(
-                        controller: pass_controller,
+                        controller: passController,
                         validator: ((value) {
                           if (value!.isEmpty) {
                             return "Enter Password";
@@ -72,13 +68,12 @@ class WorkerLogin extends StatelessWidget {
                         try {
                           final credential = await FirebaseAuth.instance
                               .signInWithEmailAndPassword(
-                                  email: user_controller.text,
-                                  password: pass_controller.text);
+                                  email: userController.text,
+                                  password: passController.text);
                           print("login");
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) =>  Electrician()),
+                            MaterialPageRoute(builder: (context) => Screen()),
                           );
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'user-not-found') {
@@ -88,12 +83,12 @@ class WorkerLogin extends StatelessWidget {
                           }
                         }
                       },
-                      child: Text(
-                        "Log In!",
-                        style: TextStyle(fontSize: 22),
-                      ),
                       style: ButtonStyle(
                         minimumSize: MaterialStateProperty.all(Size(140, 50)),
+                      ),
+                      child: const Text(
+                        "Log In!",
+                        style: TextStyle(fontSize: 22),
                       ),
                     )
                   ],
@@ -103,7 +98,7 @@ class WorkerLogin extends StatelessWidget {
           ],
         ),
       ),
-      drawer: login_drawer(),
+      drawer: login_worker_drawer(),
     );
   }
 }

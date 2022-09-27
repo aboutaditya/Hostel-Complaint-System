@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:vit_management/pages/drawer.dart';
+import 'package:vit_management/pages/electrician.dart';
 import 'package:vit_management/pages/google_Sign_in.dart';
 import 'package:vit_management/pages/home.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:vit_management/pages/login_drawer.dart';
+import 'package:vit_management/pages/login_student_drawer.dart';
 import 'package:vit_management/pages/workerlogin.dart';
 
 class LoginPage extends StatefulWidget {
@@ -53,9 +55,8 @@ class _LoginPageState extends State<LoginPage> {
                     if (GoogleSignInProvider().Sign_in_check = true) {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const Home()),
+                        MaterialPageRoute(builder: (context) =>  Home()),
                       );
-                      Center(child: CircularProgressIndicator());
                     }
                   },
                 ),
@@ -67,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
-      drawer: login_drawer(),
+      drawer: login_student_drawer(),
     );
   }
 }

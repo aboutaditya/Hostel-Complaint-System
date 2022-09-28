@@ -4,6 +4,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:vit_management/pages/google_Sign_in.dart';
 import 'package:vit_management/pages/loginpage.dart';
 import 'package:vit_management/pages/registered.dart';
+import 'package:vit_management/pages/restart.dart';
 
 class drawer extends StatelessWidget {
   const drawer({Key? key}) : super(key: key);
@@ -46,12 +47,14 @@ class drawer extends StatelessWidget {
                   )),
             ),
             ListTile(
-              onTap: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()),
-                );
+              onTap: () async {
+                await GoogleSignIn().disconnect();
+                await FirebaseAuth.instance.signOut();
+                RestartWidget.restartApp(context);
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => const LoginPage()),
+                // );
               },
               leading: const Icon(
                 Icons.logout,

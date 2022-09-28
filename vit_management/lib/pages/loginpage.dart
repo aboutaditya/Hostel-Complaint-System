@@ -1,6 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
+import 'package:vit_management/pages/delay.dart';
 import 'package:vit_management/pages/drawer.dart';
 import 'package:vit_management/pages/electrician.dart';
 import 'package:vit_management/pages/google_Sign_in.dart';
@@ -8,6 +12,7 @@ import 'package:vit_management/pages/home.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:vit_management/pages/login_drawer.dart';
 import 'package:vit_management/pages/login_student_drawer.dart';
+import 'package:vit_management/pages/signup.dart';
 import 'package:vit_management/pages/workerlogin.dart';
 
 class LoginPage extends StatefulWidget {
@@ -49,15 +54,21 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
                   ),
                   onPressed: () {
+                    // GoogleSignIn().disconnect();
                     final provider = Provider.of<GoogleSignInProvider>(context,
                         listen: false);
                     provider.googleLogin();
-                    if (GoogleSignInProvider().Sign_in_check = true) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) =>  Home()),
-                      );
-                    }
+                    // signup();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => signup()),
+                    );
+                    // if (GoogleSignInProvider().Sign_in_check = true) {
+                    //   Timer(Duration(seconds: 1), () {
+                    //     Navigator.push(
+                    //         context, MaterialPageRoute(builder: (_) => Home()));
+                    //   });
+                    // }
                   },
                 ),
                 const SizedBox(

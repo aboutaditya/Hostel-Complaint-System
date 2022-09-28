@@ -46,7 +46,8 @@ class HomeData extends StatelessWidget {
               ),
               child: Image.asset(
                 "images/electrician.jpg",
-                height: 150,
+                // height: 150,
+                
               ),
             ),
             const Text(

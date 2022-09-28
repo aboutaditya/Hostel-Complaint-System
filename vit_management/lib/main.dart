@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:vit_management/firebase_options.dart';
 import 'package:vit_management/pages/google_Sign_in.dart';
 import 'package:vit_management/pages/loginpage.dart';
+import 'package:vit_management/pages/restart.dart';
 import 'pages/home.dart';
 import 'pages/routes.dart';
 import 'firebase_options.dart';
@@ -13,7 +14,9 @@ Future main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+  runApp(
+    RestartWidget(child: MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -23,32 +26,30 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     if (GoogleSignInProvider().Sign_in_check = true) {
       return ChangeNotifierProvider(
-      create: ((context) => GoogleSignInProvider()),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        initialRoute: "/",
-        routes: {
-          "/": (context) => const LoginPage(),
-          MyRoutes.homeRoute: (context) => Home(),
-          MyRoutes.loginRoute: (context) => const LoginPage()
-        },
-      ),
-    );
-    }
-    else{
+        create: ((context) => GoogleSignInProvider()),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          initialRoute: "/",
+          routes: {
+            "/": (context) => const LoginPage(),
+            MyRoutes.homeRoute: (context) => Home(),
+            MyRoutes.loginRoute: (context) => const LoginPage()
+          },
+        ),
+      );
+    } else {
       return ChangeNotifierProvider(
-      create: ((context) => GoogleSignInProvider()),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        initialRoute: "/",
-        routes: {
-          "/": (context) => const LoginPage(),
-          MyRoutes.homeRoute: (context) => Home(),
-          MyRoutes.loginRoute: (context) => const LoginPage()
-        },
-      ),
-    );
+        create: ((context) => GoogleSignInProvider()),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          initialRoute: "/",
+          routes: {
+            "/": (context) => const LoginPage(),
+            MyRoutes.homeRoute: (context) => Home(),
+            MyRoutes.loginRoute: (context) => const LoginPage()
+          },
+        ),
+      );
     }
-    
   }
 }

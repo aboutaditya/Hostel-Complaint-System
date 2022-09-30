@@ -54,21 +54,14 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
                   ),
                   onPressed: () {
-                    // GoogleSignIn().disconnect();
                     final provider = Provider.of<GoogleSignInProvider>(context,
                         listen: false);
                     provider.googleLogin();
-                    // signup();
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => signup()),
                     );
-                    // if (GoogleSignInProvider().Sign_in_check = true) {
-                    //   Timer(Duration(seconds: 1), () {
-                    //     Navigator.push(
-                    //         context, MaterialPageRoute(builder: (_) => Home()));
-                    //   });
-                    // }
+                    
                   },
                 ),
                 const SizedBox(

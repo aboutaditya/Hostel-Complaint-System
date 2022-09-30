@@ -175,6 +175,7 @@ class _ElectricianState extends State<Electrician> {
       'roomno': roomnno,
       'contno': contno,
       'complaint': complaint,
+      'status':'inc',
     };
     await docUser.set(json);
   }

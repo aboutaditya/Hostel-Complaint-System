@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as u;
 import 'package:flutter/material.dart';
+import 'package:vit_management/pages/carpenter.dart';
+import 'package:vit_management/pages/home.dart';
 import 'package:vit_management/pages/user.dart';
 
 String typew = '';
+
 
 class Screen extends StatefulWidget {
   @override
@@ -15,7 +18,10 @@ class _ScreenState extends State<Screen> {
       FirebaseFirestore.instance.collection('worker');
 
   void getUsersData() {
-    collectionReference.doc(u.FirebaseAuth.instance.currentUser!.email!).get().then((value) {
+    collectionReference
+        .doc(u.FirebaseAuth.instance.currentUser!.email!)
+        .get()
+        .then((value) {
       var fields = value;
 
       setState(() {
@@ -51,8 +57,10 @@ class _ScreenState extends State<Screen> {
 
   Widget buildUser(User user) {
     getUsersData();
-    if (user.type == typew) {
+    if ((user.type == typew) & (user.status == "inc")) {
       return ListTile(
+        
+        leading: CircleAvatar(backgroundColor: Colors.red),
         title: Text(user.roomno),
         subtitle: Text(user.complaint),
       );

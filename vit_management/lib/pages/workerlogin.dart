@@ -46,6 +46,9 @@ class WorkerLogin extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: TextFormField(
+                        obscureText: true,
+                        enableSuggestions: false,
+                        autocorrect: false,
                         controller: passController,
                         validator: ((value) {
                           if (value!.isEmpty) {

@@ -3,9 +3,57 @@ import 'package:firebase_auth/firebase_auth.dart' as u;
 import 'package:flutter/material.dart';
 import 'package:vit_management/pages/user.dart';
 
-class Registered extends StatelessWidget {
+Future<void> _dialogBuilder(BuildContext context) {
+  CollectionReference users = FirebaseFirestore.instance.collection('complaint');
+
+  Future<void> updateUser() {
+    return users
+        .doc('Ro23I0kPfof9Uy3sXmRl')
+        .update({'status': 'comp'})
+        .then((value) => print("User Updated"))
+        .catchError((error) => print("Failed to update user: $error"));
+  }
+
+  return showDialog<void>(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Complaint Operations'),
+        content: const Text('Do you wish to set complaint as done'),
+        actions: <Widget>[
+          TextButton(
+            style: TextButton.styleFrom(
+              textStyle: Theme.of(context).textTheme.labelLarge,
+            ),
+            child: const Text('Cancel'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          TextButton(
+            style: TextButton.styleFrom(
+              textStyle: Theme.of(context).textTheme.labelLarge,
+            ),
+            child: const Text('Done'),
+            onPressed: () {
+              updateUser();
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
+
+class Registered extends StatefulWidget {
   const Registered({Key? key}) : super(key: key);
 
+  @override
+  State<Registered> createState() => _RegisteredState();
+}
+
+class _RegisteredState extends State<Registered> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +72,6 @@ class Registered extends StatelessWidget {
             return Text('Something went wrong');
           } else if (snapshot.hasData) {
             final users = snapshot.data!;
-            // return Text('$users.contains("mail")');
             return ListView(
               children: users.map(buildUser).toList(),
             );
@@ -37,8 +84,16 @@ class Registered extends StatelessWidget {
   }
 
   Widget buildUser(User user) {
-    if (user.mail == u.FirebaseAuth.instance.currentUser!.email!) {
+    if ((user.mail == u.FirebaseAuth.instance.currentUser!.email!) &
+        (user.status == "inc")) {
       return ListTile(
+        onTap: (() {
+          print("tapped");
+          _dialogBuilder(context);
+        }),
+        leading: CircleAvatar(
+          backgroundColor: Colors.red,
+        ),
         title: Text(user.roomno),
         subtitle: Text(user.complaint),
       );

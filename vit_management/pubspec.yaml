@@ -44,6 +44,8 @@ dependencies:
   loading_animation_widget:
   firebase_database: ^9.1.4
   cloud_firestore: ^3.4.8
+  flutter_sms: ^2.3.3
+  sms_advanced: ^1.0.1
 
 
 dev_dependencies:

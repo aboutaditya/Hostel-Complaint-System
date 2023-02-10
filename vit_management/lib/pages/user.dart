@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class User {
   String regno;
   final String status;
+  final String id;
   final String roomno;
   final String contno;
   final String complaint;
@@ -10,6 +11,7 @@ class User {
   final String type;
   User({
     required this.regno,
+    required this.id,
     required this.roomno,
     required this.contno,
     required this.complaint,
@@ -18,6 +20,7 @@ class User {
     required this.status,
   });
   Map<String, dynamic> toJson() => {
+        'id':id,
         'regno': regno,
         'roomno': roomno,
         'contno': contno,
@@ -27,6 +30,7 @@ class User {
         'status': status,
       };
   static User fromJson(Map<String, dynamic> json) => User(
+      id: json['id'],
       regno: json['regno'],
       roomno: json['roomno'],
       contno: json['contno'],

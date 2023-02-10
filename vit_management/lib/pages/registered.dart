@@ -3,12 +3,12 @@ import 'package:firebase_auth/firebase_auth.dart' as u;
 import 'package:flutter/material.dart';
 import 'package:vit_management/pages/user.dart';
 
-Future<void> _dialogBuilder(BuildContext context) {
+Future<void> _dialogBuilder(BuildContext context, String id) {
   CollectionReference users = FirebaseFirestore.instance.collection('complaint');
 
   Future<void> updateUser() {
     return users
-        .doc('Ro23I0kPfof9Uy3sXmRl')
+        .doc(id)
         .update({'status': 'comp'})
         .then((value) => print("User Updated"))
         .catchError((error) => print("Failed to update user: $error"));
@@ -89,7 +89,7 @@ class _RegisteredState extends State<Registered> {
       return ListTile(
         onTap: (() {
           print("tapped");
-          _dialogBuilder(context);
+          _dialogBuilder(context,user.id);
         }),
         leading: CircleAvatar(
           backgroundColor: Colors.red,

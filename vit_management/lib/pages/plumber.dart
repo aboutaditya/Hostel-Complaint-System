@@ -1,14 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sms/flutter_sms.dart';
-void _sendSMS(String message, List<String> recipents) async {
-  String _result = await sendSMS(message: message, recipients: recipents)
-      .catchError((onError) {
-    print(onError);
-  });
-  print(_result);
-}
 class plumber extends StatefulWidget {
   plumber({Key? key}) : super(key: key);
 
@@ -168,7 +160,8 @@ class _plumberState extends State<plumber> {
     String mail = FirebaseAuth.instance.currentUser!.email!;
 
     final json = {
-      'type': 'plumber',
+      'id':docUser.id,
+      'type': 'carpenter',
       'mail': mail,
       'regno': regno,
       'roomno': roomnno,

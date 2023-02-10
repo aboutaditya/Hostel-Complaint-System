@@ -1,15 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_sms/flutter_sms.dart';
 
-void _sendSMS(String message, List<String> recipents) async {
-  String _result = await sendSMS(message: message, recipients: recipents)
-      .catchError((onError) {
-    print(onError);
-  });
-  print(_result);
-}
+
 
 class Electrician extends StatefulWidget {
   Electrician({Key? key}) : super(key: key);
@@ -169,13 +162,15 @@ class _ElectricianState extends State<Electrician> {
     final docUser = FirebaseFirestore.instance.collection('complaint').doc();
     String mail = FirebaseAuth.instance.currentUser!.email!;
     final json = {
-      'type': 'electrician',
+      'id':docUser.id,
+      'type': 'carpenter',
       'mail': mail,
       'regno': regno,
       'roomno': roomnno,
       'contno': contno,
       'complaint': complaint,
-      'status':'inc',
+      'status':'inc'
+
     };
     await docUser.set(json);
   }

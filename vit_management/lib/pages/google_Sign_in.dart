@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../firebase_options.dart';
+
 class GoogleSignInProvider extends ChangeNotifier {
   final googleSignIn = GoogleSignIn();
   bool Sign_in_check = false;
@@ -10,7 +12,10 @@ class GoogleSignInProvider extends ChangeNotifier {
   GoogleSignInAccount get user => _user!;
 
   Future googleLogin() async {
-    final googleUser = await googleSignIn.signIn();
+    final googleUser = await GoogleSignIn(
+            clientId: DefaultFirebaseOptions.currentPlatform.iosClientId)
+        .signIn();
+
     if (googleUser == null) return;
     _user = googleUser;
     final googleAuth = await googleUser.authentication;

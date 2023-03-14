@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as u;
 import 'package:flutter/material.dart';
-import 'package:vit_management/pages/carpenter.dart';
-import 'package:vit_management/pages/home.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vit_management/pages/user.dart';
 
 String typew = '';
-
 
 class Screen extends StatefulWidget {
   @override
@@ -33,8 +31,17 @@ class _ScreenState extends State<Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text("Complaints"),
+        leading: GestureDetector(
+            onTap: () {
+              u.FirebaseAuth.instance.signOut();
+              Navigator.pop(context);
+            },
+            child: Icon(Icons.logout)),
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.black,
+        title: Text("${typew} Admin"),
         centerTitle: true,
       ),
       body: StreamBuilder<List<User>>(
@@ -59,10 +66,19 @@ class _ScreenState extends State<Screen> {
     getUsersData();
     if ((user.type == typew) & (user.status == "inc")) {
       return ListTile(
-        
-        leading: CircleAvatar(backgroundColor: Colors.red),
-        title: Text(user.roomno),
-        subtitle: Text(user.complaint),
+        leading: Icon(
+          FontAwesomeIcons.clock,
+          size: 31,
+          color: Colors.white,
+        ),
+        title: Text(
+          'Room No. ${user.roomno}',
+          style: TextStyle(color: Colors.white),
+        ),
+        subtitle: Text(
+          'Complaint : ${user.complaint}',
+          style: TextStyle(color: Colors.white),
+        ),
       );
     } else {
       return SizedBox(

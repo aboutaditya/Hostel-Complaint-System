@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:vit_management/pages/home.dart';
+import 'package:vit_management/pages/loginpage.dart';
 
 class signup extends StatelessWidget {
   const signup({Key? key}) : super(key: key);
@@ -19,9 +20,9 @@ class signup extends StatelessWidget {
                 return Home();
               } else if (snapshot.hasError) {
                 print('Something is wrong');
-                return signup();
+                return LoginPage();
               } else {
-                return  signup();
+                return  LoginPage();
               }
             }),
       );

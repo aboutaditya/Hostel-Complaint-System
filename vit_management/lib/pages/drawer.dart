@@ -17,12 +17,13 @@ class drawer extends StatelessWidget {
     String purl = user.photoURL!;
     return Drawer(
       child: Container(
-        color: Colors.blue,
+        color: Colors.black,
         child: ListView(
           children: [
             DrawerHeader(
                 padding: EdgeInsets.zero,
                 child: UserAccountsDrawerHeader(
+                  decoration: BoxDecoration(color: Colors.black),
                   accountName: Text(usern),
                   accountEmail: Text(emaill),
                   currentAccountPicture: CircleAvatar(
@@ -48,13 +49,13 @@ class drawer extends StatelessWidget {
             ),
             ListTile(
               onTap: () async {
-                await GoogleSignIn().disconnect();
+                // await GoogleSignIn().disconnect();
                 await FirebaseAuth.instance.signOut();
-                RestartWidget.restartApp(context);
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => const LoginPage()),
-                // );
+                // RestartWidget.restartApp(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                );
               },
               leading: const Icon(
                 Icons.logout,

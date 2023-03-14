@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 import 'package:vit_management/firebase_options.dart';
 import 'package:vit_management/pages/google_Sign_in.dart';
@@ -15,6 +16,7 @@ Future main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  
   runApp(
     RestartWidget(child: MyApp()),
   );
@@ -52,16 +54,14 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     checkLogin();
   }
+
   @override
   Widget build(BuildContext context) {
-    
-      return ChangeNotifierProvider(
+    return ChangeNotifierProvider(
         create: ((context) => GoogleSignInProvider()),
-        child:  MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: login ? Home() : LoginPage(),
-    )
-      );
-   
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: login ? Home() : LoginPage(),
+        ));
   }
 }

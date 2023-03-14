@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:vit_management/pages/login_drawer.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:vit_management/pages/worker.dart';
 
 class WorkerLogin extends StatelessWidget {
@@ -13,15 +13,14 @@ class WorkerLogin extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Worker Log In!"),
+        backgroundColor: Colors.black,
+        title: Text("Admin Login"),
         centerTitle: true,
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(
-              height: 10,
-            ),
             Center(
               child: SingleChildScrollView(
                 child: Column(
@@ -66,8 +65,8 @@ class WorkerLogin extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    ElevatedButton(
-                      onPressed: () async {
+                    GestureDetector(
+                      onTap: () async {
                         try {
                           final credential = await FirebaseAuth.instance
                               .signInWithEmailAndPassword(
@@ -86,12 +85,33 @@ class WorkerLogin extends StatelessWidget {
                           }
                         }
                       },
-                      style: ButtonStyle(
-                        minimumSize: MaterialStateProperty.all(Size(140, 50)),
-                      ),
-                      child: const Text(
-                        "Log In!",
-                        style: TextStyle(fontSize: 22),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(13)),
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        height: MediaQuery.of(context).size.width * 0.15,
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                "Log In",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 22,
+                                    color: Colors.white),
+                              ),
+                              SizedBox(
+                                width: 8,
+                              ),
+                              Icon(
+                                FontAwesomeIcons.arrowRight,
+                                color: Colors.white,
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                     )
                   ],
@@ -101,7 +121,6 @@ class WorkerLogin extends StatelessWidget {
           ],
         ),
       ),
-      drawer: login_worker_drawer(),
     );
   }
 }

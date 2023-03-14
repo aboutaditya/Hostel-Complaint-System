@@ -1,10 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as u;
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:vit_management/pages/user.dart';
 
 Future<void> _dialogBuilder(BuildContext context, String id) {
-  CollectionReference users = FirebaseFirestore.instance.collection('complaint');
+  CollectionReference users =
+      FirebaseFirestore.instance.collection('complaint');
 
   Future<void> updateUser() {
     return users
@@ -18,8 +21,15 @@ Future<void> _dialogBuilder(BuildContext context, String id) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: const Text('Complaint Operations'),
-        content: const Text('Do you wish to set complaint as done'),
+        backgroundColor: Color.fromARGB(59, 91, 83, 83),
+        title: const Text(
+          'Complaint Operations',
+          style: TextStyle(color: Colors.white),
+        ),
+        content: const Text(
+          'Do you wish to set complaint as done',
+          style: TextStyle(color: Colors.white),
+        ),
         actions: <Widget>[
           TextButton(
             style: TextButton.styleFrom(
@@ -57,8 +67,9 @@ class _RegisteredState extends State<Registered> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       appBar: AppBar(
+        backgroundColor: Colors.black,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
@@ -89,13 +100,21 @@ class _RegisteredState extends State<Registered> {
       return ListTile(
         onTap: (() {
           print("tapped");
-          _dialogBuilder(context,user.id);
+          _dialogBuilder(context, user.id);
         }),
-        leading: CircleAvatar(
-          backgroundColor: Colors.red,
+        leading: Icon(
+          FontAwesomeIcons.clock,
+          color: Colors.white,
+          size: 35,
         ),
-        title: Text(user.roomno),
-        subtitle: Text(user.complaint),
+        title: Text(
+          'Complaint : ${user.complaint}',
+          style: GoogleFonts.poppins(color: Colors.white),
+        ),
+        subtitle: Text(
+          'Type : ${user.type}',
+          style: GoogleFonts.poppins(color: Colors.white),
+        ),
       );
     } else {
       return SizedBox(

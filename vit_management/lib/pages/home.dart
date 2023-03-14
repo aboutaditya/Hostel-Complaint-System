@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:vit_management/pages/home_data.dart';
 import 'drawer.dart';
 
@@ -14,12 +15,16 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       // resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text("Complaint System"),
+        backgroundColor: Colors.black,
+        title: Text(
+          "Hostel Complaint System",
+          style: GoogleFonts.poppins(color: Colors.white),
+        ),
         centerTitle: true,
       ),
-      body:HomeData(),
+      body: HomeData(),
       drawer: drawer(),
     );
   }

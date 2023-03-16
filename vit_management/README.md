@@ -1,16 +1,6 @@
-# vit_management
-
-A Flutter project for complaint management.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Complaint_management_system_using_flutter
+This is Complaint Management system created for my own college hostel services that will help make things work faster and smoother.
+This is one of my very first flutter application that uses 
+Google oAuth using Firebase and firebase as backend for the real time complaint registration that displays option using GridView.
+NOTE-- FirebaseOption File is not included in the project. Kindly contact me to know more about the projects.
+![Complaint Management System](https://user-images.githubusercontent.com/100947528/225574700-3abd3df2-93f1-4420-b324-343ac293dbb4.png)
